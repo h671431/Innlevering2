@@ -78,7 +78,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public T fjern(T element) {
 
-		// Søker etter og fjerner element. Returnerer null-ref ved ikke-funn
+		// Sï¿½ker etter og fjerner element. Returnerer null-ref ved ikke-funn
 
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
@@ -110,8 +110,8 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}
 
 	/*
-	 * Når vi overkjører (override) equals- meteoden er det anbefalt at vi også
-	 * overkjører hashcode-metoden da en del biblioterker brker hashcode sammen med
+	 * Nï¿½r vi overkjï¿½rer (override) equals- meteoden er det anbefalt at vi ogsï¿½
+	 * overkjï¿½rer hashcode-metoden da en del biblioterker brker hashcode sammen med
 	 * equals. Vi kommer tilbake til forklaring og bruk av hashcode senere i faget.
 	 */
 	@Override
@@ -126,47 +126,51 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public boolean equals(Object m2) {
 		boolean likeMengder = true;
-		T element;
+		
+		if(getClass() != m2.getClass() || m2 == null) return false;
+		MengdeADT<T> cmp = (MengdeADT<T>) m2;
+		if(this.antall != cmp.antall()) return false;
+		for(T elm : tab) {
+			if(cmp.inneholder(elm) == false) return false;
+		}
 
-		/*
-		 * ...Fyll ut
-		 */
 		return likeMengder;
 	}
 
 	@Override
 	public MengdeADT<T> union(MengdeADT<T> m2) { // Denne metoden erstattes med en mer effektiv, se KladdeoppgaveNr3
-		TabellMengde<T> begge = new TabellMengde<T>();
-		for (int i = 0; i < antall; i++) {
-			begge.leggTil(tab[i]);
-		}
-		Iterator<T> teller = m2.iterator();
-
-		while (teller.hasNext()) {
-			begge.leggTil(teller.next());
-		}
-		return (MengdeADT<T>) begge;
+		MengdeADT<T> negge = new TabellMengde<T>();
+		begge.leggTilAlle(this);
+		begge.leggTilAlle(m2);
+		return begge;
 	}
 
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
 		MengdeADT<T> snittM = new TabellMengde<T>();
-		T element = null;
-		/*
-		 * ...Fyll ut senere
-		 */
+		for(T elm : tab) {
+			if(m2.inneholder(elm)) {
+				snittM.leggTil(elm);;
+			}
+		}
 		return snittM;
 	}
 
 	@Override
 	public MengdeADT<T> differens(MengdeADT<T> m2) {
 		MengdeADT<T> differensM = new TabellMengde<T>();
-		T element;
-		/*
-		 * Fyll ut senere
-		 * 
-		 * if (!m2.inneholder(element)) ((TabellMengde<T>) differensM).settInn(element);
-		 */
+		for(int i = 0; i<antall; i++) {
+			if(m2.inneholder(tab[i])== false) {
+				differensM.leggTil(tab[i]);
+			}
+		} 
+		Iterator<T> it = m2.iterator();
+		while(it.hashNext()) {
+			T elm = it.next();
+			if(this.inneholder(elm) == false) {
+				differensM.leggTil(elm);
+			}
+		}
 
 		return differensM;
 	}
@@ -174,8 +178,13 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
 		boolean erUnderMengde = true;
-		// ...Fyll ut senere
-		return false;
+		for(T elm : tab) {
+			if(m2.inneholder(elm) == false) {
+				erUnderMengde = false;
+				break;
+			}
+		}
+		return erUnderMengde;
 	}
 
 	@Override
