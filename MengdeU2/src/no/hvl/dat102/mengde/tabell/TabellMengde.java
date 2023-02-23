@@ -6,6 +6,7 @@ import java.util.Random;
 
 import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.mengde.adt.MengdeADT;
+import no.hvl.dat102.mengde.kjedet.LinearNode;
 
 public class TabellMengde<T> implements MengdeADT<T> {
 	// ADT-en Mengde implementert som tabell
@@ -189,6 +190,17 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		}
 		tab[antall] = element;
 		antall++;
+	}
+	//B: Må gjøres om
+	@Override
+	public String toString() {
+		String resultat = "";
+		T[] aktuell = tab;
+		while (aktuell != null) {
+		//	resultat += aktuell.getElement().toString() + "\t";
+		//	aktuell = aktuell.getNeste();
+		}
+		return resultat;
 	}
 
 }// class

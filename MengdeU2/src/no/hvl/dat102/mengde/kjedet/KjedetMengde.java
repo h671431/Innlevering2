@@ -68,7 +68,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	}//
 
 	@Override
-	public T fjern(T element) { //Denne skal vi se på litt senere
+	public T fjern(T element) { // Denne skal vi se på litt senere
 
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
@@ -148,7 +148,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		} else {
 			Iterator<T> teller = m2.iterator();
 
-			//Fyll ut
+			// Fyll ut
 		}
 		return true;// Midlertidig
 	}
@@ -163,20 +163,19 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		return antall;
 	}
 
-
 	@Override
-	public MengdeADT<T> union (MengdeADT<T> m2) { // Denne ersattes med en mer effektiv union, se kladdeoppgavenr3
+	public MengdeADT<T> union(MengdeADT<T> m2) { // Denne ersattes med en mer effektiv union, se kladdeoppgavenr3
 		KjedetMengde<T> begge = new KjedetMengde<T>();
-	    LinearNode<T> aktuell = start;
-	    while (aktuell != null) {    
-	          begge.leggTil (aktuell.getElement());
-	          aktuell = aktuell.getNeste();   //this-mengden
-	    }//while
-	    Iterator<T> teller = m2.iterator();
-	    while (teller.hasNext()){
-	           begge.leggTil (teller.next());
-	     }   
-	    return begge;
+		LinearNode<T> aktuell = start;
+		while (aktuell != null) {
+			begge.leggTil(aktuell.getElement());
+			aktuell = aktuell.getNeste(); // this-mengden
+		} // while
+		Iterator<T> teller = m2.iterator();
+		while (teller.hasNext()) {
+			begge.leggTil(teller.next());
+		}
+		return begge;
 	}//
 
 	@Override
@@ -218,11 +217,23 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		return new KjedetIterator<T>(start);
 	}
 
-	private void settInn(T element) { //Hjelpemetode
+	private void settInn(T element) { // Hjelpemetode
 		LinearNode<T> nyNode = new LinearNode<T>(element);
 		nyNode.setNeste(start);
 		start = nyNode;
 		antall++;
+	}
+
+	// Returnerer en streng som representerer mengden.
+	@Override
+	public String toString() {
+		String resultat = "";
+		LinearNode<T> aktuell = start;
+		while (aktuell != null) {
+			resultat += aktuell.getElement().toString() + "\t";
+			aktuell = aktuell.getNeste();
+		}
+		return resultat;
 	}
 
 }// class
