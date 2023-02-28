@@ -15,7 +15,9 @@ public class Hobby {
 		// Merk: Kan også ha uten  «<» og «>», men forsøk med. 
 	
 	}
-	
+	public String getHobbyNavn() {
+		return hobbyNavn;
+	}
 	public boolean equals(Object hobby2){  
 		// eventuelt fylle ut først med "standard" kode        
 		// som vi ofte har med overkjøring av 
