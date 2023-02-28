@@ -1,8 +1,6 @@
 package no.hvl.dat102.mengde.kjedet;
 
-//********************************************************************
-// Kjedet implementasjon av en mengde. 
-//********************************************************************
+ 
 import java.util.Iterator;
 import java.util.Random;
 
@@ -13,6 +11,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	private static Random rand = new Random();
 	private int antall; // antall elementer i mengden
 	private LinearNode<T> start;
+	//hei, kan du ses dette????
 
 	//Oppretter en tom mengde.
 	public KjedetMengde() {
@@ -63,10 +62,14 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 		return resultat;
 
-	}//
+	}
 
 	@Override
+<<<<<<< HEAD
 	public T fjern(T element) { // Denne skal vi se på litt senere
+=======
+	public T fjern(T element) { 
+>>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
 
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
@@ -276,4 +279,19 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		return resultat;
 	}
 
+	@Override
+	
+	public String toString() {
+		String outstring = "[";
+		LinearNode<T> aktuell = start;
+		while (aktuell != null) {
+			outstring += "\" " + aktuell.getElement().toString() +"\"";
+			if(aktuell.getNeste() != null) {
+				outstring += ", ";
+			}aktuell = aktuell.getNeste();
+		}
+		outstring += "]";
+		return outstring;
+				
+	}
 }// class
