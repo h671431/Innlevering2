@@ -11,6 +11,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	private static Random rand = new Random();
 	private int antall; // antall elementer i mengden
 	private LinearNode<T> start;
+	//hei, kan du ses dette????
 
 	/**
 	 * Oppretter en tom mengde.
