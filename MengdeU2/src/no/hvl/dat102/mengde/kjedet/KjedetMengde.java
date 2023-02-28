@@ -11,10 +11,9 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	private static Random rand = new Random();
 	private int antall; // antall elementer i mengden
 	private LinearNode<T> start;
+	//hei, kan du ses dette????
 
-	/**
-	 * Oppretter en tom mengde.
-	 */
+	//Oppretter en tom mengde.
 	public KjedetMengde() {
 		antall = 0;
 		start = null;
@@ -66,7 +65,11 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
+<<<<<<< HEAD
+	public T fjern(T element) { // Denne skal vi se på litt senere
+=======
 	public T fjern(T element) { 
+>>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
 
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
@@ -146,6 +149,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		} else {
 			Iterator<T> teller = m2.iterator();
 
+
 				while (teller.hasNext() && likeMengder) {
 					T element = teller.next();
 					if(!this.inneholder(element)) {
@@ -153,6 +157,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 					}
 					
 				}
+
 		}
 		return likeMengder;
 	}
@@ -167,8 +172,21 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		return antall;
 	}
 
-
 	@Override
+	public MengdeADT<T> union(MengdeADT<T> m2) { // Denne ersattes med en mer effektiv union, se kladdeoppgavenr3
+		KjedetMengde<T> begge = new KjedetMengde<T>();
+		LinearNode<T> aktuell = start;
+		while (aktuell != null) {
+			begge.leggTil(aktuell.getElement());
+			aktuell = aktuell.getNeste(); // this-mengden
+		} // while
+		Iterator<T> teller = m2.iterator();
+		while (teller.hasNext()) {
+			begge.leggTil(teller.next());
+		}
+		return begge;
+	}//
+
 	public MengdeADT<T> union (MengdeADT<T> m2) { 
 		MengdeADT<T> begge = new KjedetMengde<T>();
 		LinearNode<T> aktuell = start;
@@ -244,11 +262,21 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		return new KjedetIterator<T>(start);
 	}
 
-	private void settInn(T element) { //Hjelpemetode
+	private void settInn(T element) { // Hjelpemetode
 		LinearNode<T> nyNode = new LinearNode<T>(element);
 		nyNode.setNeste(start);
 		start = nyNode;
 		antall++;
+	}
+	@Override
+	public String toString() {
+		String resultat = "";
+		LinearNode<T> aktuell = start;
+		while (aktuell != null) {
+			resultat += aktuell.getElement().toString() + "\t";
+			aktuell = aktuell.getNeste();
+		}
+		return resultat;
 	}
 
 	@Override

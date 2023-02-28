@@ -6,6 +6,7 @@ import java.util.Random;
 
 import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.mengde.adt.MengdeADT;
+import no.hvl.dat102.mengde.kjedet.LinearNode;
 
 public class TabellMengde<T> implements MengdeADT<T> {
 	
@@ -197,6 +198,21 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		tab[antall] = element;
 		antall++;
 	}
+<<<<<<< HEAD
+	//B: Må gjøres om
+	@Override
+	public String toString() {
+		String resultat = "";
+		T[] aktuell = tab;
+		while (aktuell != null) {
+			for(int i=0; i<antall; i++) {
+				resultat += "\"" + tab[i].toString() + "\"";
+				if(i < antall-1)
+					resultat += ", ";
+			}
+		}
+		return resultat;
+=======
 	
 	@Override
 	public String toString() {
@@ -209,6 +225,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		}
 			outstring += "]";
 			return outstring;
+>>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
 	}
 
 }// class
