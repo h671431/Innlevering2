@@ -8,8 +8,7 @@ import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.mengde.adt.MengdeADT;
 
 public class TabellMengde<T> implements MengdeADT<T> {
-	// ADT-en Mengde implementert som tabell
-	//
+	
 	private final static Random tilf = new Random();
 	private final static int STDK = 100;
 	private int antall;
@@ -89,7 +88,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 			if (tab[i].equals(element)) {
 				svar = tab[i];
 				tab[i] = tab[antall - 1];
-				// tab[antall-1] = null;
 				antall--;
 				funnet = true;
 
@@ -138,7 +136,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-	public MengdeADT<T> union(MengdeADT<T> m2) { // Denne metoden erstattes med en mer effektiv, se KladdeoppgaveNr3
+	public MengdeADT<T> union(MengdeADT<T> m2) { 
 		MengdeADT<T> negge = new TabellMengde<T>();
 		begge.leggTilAlle(this);
 		begge.leggTilAlle(m2);
@@ -192,12 +190,25 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		return new TabellIterator<T>(tab, antall);
 	}
 
-	private void settInn(T element) {// hjelpemetode
+	private void settInn(T element) {
 		if (antall == tab.length) {
 			utvidKapasitet();
 		}
 		tab[antall] = element;
 		antall++;
+	}
+	
+	@Override
+	public String toString() {
+		String outstring = "[";
+		for(int i = 0; i < antall; i++) {
+			outstring += "\"" + tab[i].toString() + "\"";
+			if(i < antall-1) {
+				outstring += ", ";
+			}
+		}
+			outstring += "]";
+			return outstring;
 	}
 
 }// class
