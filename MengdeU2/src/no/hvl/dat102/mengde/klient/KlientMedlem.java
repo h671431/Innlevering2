@@ -15,15 +15,12 @@ public class KlientMedlem {
 		TabellMengde<Hobby> hobbier1 = new TabellMengde<>();
 		TabellMengde<Hobby> hobbier2 = new TabellMengde<>();
 		
+		tab.leggTilMedlem(new Medlem("Nils", hobbier1));
+		tab.leggTilMedlem(new Medlem("Hanne", hobbier2));
+		tab.leggTilMedlem(new Medlem("Mons", hobbier1));
+		tab.leggTilMedlem(new Medlem("Live", hobbier2));
 		System.out.println(tab.toString());
-		//utskrift();
-		//toString
+	
 	}
+}
 		
-		//public void utskrift() {
-		//System.out.println("Medlemsnavn: " + /n + Medlem.getNavn +  );
-		//System.out.println();
-} 
-		//Lag en ekstra metode for utskrift til skjerm av 
-		//alle medlemsdata for dette formålet. 
-

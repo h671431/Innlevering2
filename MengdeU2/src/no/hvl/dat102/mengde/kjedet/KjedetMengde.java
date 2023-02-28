@@ -14,9 +14,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	private int antall; // antall elementer i mengden
 	private LinearNode<T> start;
 
-	/**
-	 * Oppretter en tom mengde.
-	 */
+	//Oppretter en tom mengde.
 	public KjedetMengde() {
 		antall = 0;
 		start = null;
@@ -68,11 +66,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	}//
 
 	@Override
-<<<<<<< HEAD
 	public T fjern(T element) { // Denne skal vi se på litt senere
-=======
-	public T fjern(T element) { //Denne skal vi se pï¿½ litt senere
->>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
 
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
@@ -152,9 +146,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		} else {
 			Iterator<T> teller = m2.iterator();
 
-<<<<<<< HEAD
-			// Fyll ut
-=======
+
 				while (teller.hasNext() && likeMengder) {
 					T element = teller.next();
 					if(!this.inneholder(element)) {
@@ -162,7 +154,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 					}
 					
 				}
->>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
+
 		}
 		return likeMengder;
 	}
@@ -178,7 +170,6 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public MengdeADT<T> union(MengdeADT<T> m2) { // Denne ersattes med en mer effektiv union, se kladdeoppgavenr3
 		KjedetMengde<T> begge = new KjedetMengde<T>();
 		LinearNode<T> aktuell = start;
@@ -192,7 +183,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		}
 		return begge;
 	}//
-=======
+
 	public MengdeADT<T> union (MengdeADT<T> m2) { 
 		MengdeADT<T> begge = new KjedetMengde<T>();
 		LinearNode<T> aktuell = start;
@@ -211,7 +202,6 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		}
 		return begge;
 	}
->>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
 
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
@@ -275,8 +265,6 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		start = nyNode;
 		antall++;
 	}
-
-	// Returnerer en streng som representerer mengden.
 	@Override
 	public String toString() {
 		String resultat = "";

@@ -6,7 +6,7 @@ import no.hvl.dat102.mengde.kjedet.KjedetMengde;
 public class Medlem {
 	private String navn;
 	private MengdeADT<Hobby> hobbyer;
-	private int statusIndeks; // -1 hvis ikke koblet
+	private int statusIndeks; 
 
 	public Medlem(String navn, MengdeADT<Hobby> hobbyer, int statusIndeks) {
 		this.navn = navn;
@@ -14,7 +14,6 @@ public class Medlem {
 		this.statusIndeks = -1;
 	}
 
-	// get- og set metoder
 	public String getNavn() {
 		return navn;
 	}

@@ -10,10 +10,6 @@ public class Hobby {
 	public String toString(){ 
 		String resultat = "<" + hobbyNavn + ">";
 		return resultat;
-		//... returnerer hobbynavnet med ”<” foran og ”>” bak som  
-		// String (Eksempel: <tegne, male>) 
-		// Merk: Kan også ha uten  «<» og «>», men forsøk med. 
-	
 	}
 	public String getHobbyNavn() {
 		return hobbyNavn;
