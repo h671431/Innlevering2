@@ -3,9 +3,13 @@ package no.hvl.dat102.mengde.klient;
 import java.util.Scanner;
 
 public class Tekstgrensesnitt {
-		//Hvis du vil lage meny, kan du ogs� legge det inn i Tekstgrensesnitt 
-		// leser opplysningene om et medlem fra tastatur 
-		public static Medlem lesMedlem(){ 
+	private static Datakontakt data;
+	
+		public Tekstgrensesnitt(Datakontakt data) {
+			Tekstgrensesnitt.data = data;
+		
+		}
+		public static Medlem lesMedlem(){  //
 			
 			Scanner read = new Scanner(System.in);  // lager scanner
 			//thing jeg ønsker dere skal legge til.
@@ -32,17 +36,33 @@ public class Tekstgrensesnitt {
 		    System.out.println(medlem.getHobbyer().toString()); 
 		} 
 		public static void skrivParListe (Datakontakt arkiv){ 
-		/* skriver ut p� skjermen en oversikt over medlemmer som er koblet 
-		til hverandre i medlemstabellen til enhver tid. 
-		Et slikt par skal kun vises �n gang p� utskriftlisten. Metoden 
-		skriver ogs� ut antall par som er funnet. 
-		Eksempel p� utskrift: 
-		PARNAVN HOBBYER 
-		Erna og Jonas  <ski, musikk, politikk>  
-		Eva og Adam < epleplukking, paradishopping> 
-		......................... 
-		Antall par funnet: 12 
-		 */  
+			Datakontakt kopi = arkiv;
+			String liste = "";
+			String partnerNavn = "";
+			Medlem m1;
+			Medlem m2;
+			Medlem[] m = kopi.getMedlemsTabell(); // navn på tabellen vår!!!
+			int størrelse = kopi.getAntall();
+			
+			for(int i = 0; i < størrelse; i++) {
+				
+				m1 = m[i];
+				
+				if(m1.getStatusIndeks() > i || m1.getStatusIndex() == -1) {
+					liste += m1.getNavn() + " og ";
+					kopi.finnPartnerFor(m1.getNavn());
+					if(m1.getStatusIndeks() != -1) {
+						m2 = m[m1.getStatusIndeks()];
+						partnerNavn = m2.getNavn();
+			
+					}else
+						partnerNavn = "(ingen partner)";
+					liste += partnerNavn + " ";
+					liste += m1.getHobbyer();
+					liste += "\n";
+				}
+			}
+			System.out.println(liste);
 
 }
 	}
