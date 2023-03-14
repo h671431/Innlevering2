@@ -6,23 +6,41 @@ public class Datakontakt {
 	private Medlem[] medlemTab;
 	
 	public Datakontakt() {
-		medlemTab = new Medlem[100];
+		int maksMengde = 100;
+		medlemTab = new Medlem[maksMengde];
 		antallMedlemmer = 0;
 	}
 	
 	//LEgger til et nytt medlem i medlemstabellen
 	public void leggTilMedlem (Medlem person) {
-		person.setStatusIndeks(antallMedlemmer);
-		medlemTab[antallMedlemmer++] = person;
+		//person.setStatusIndeks(antallMedlemmer);
+		//medlemTab[antallMedlemmer++] = person;
+		//forslag ny koden
+		//burde kanskje ha noe som sjekker om vi nærmer oss maks antal medlemmer. men det er en eksklusiv klubb så de kan ikke ha mer en 100 medlemmer.
+		if(antallMedlemmer == 0) {
+			medlemTab[0] = person;
+			antallMedlemmer ++;
+		}
+		medlemTab[antallMedlemmer + 1] = person;
+		antallMedlemmer++;
 	
 			
 	}
 	public int finnMedlemsIndeks (String medlemsnavn) {
-		for (int i = 0; i < antallMedlemmer; i++) {
-			if (medlemTab[i].getNavn() == medlemsnavn)
-				return medlemTab[i].getStatusIndeks();
+//		for (int i = 0; i < antallMedlemmer; i++) {
+//			if (medlemTab[i].getNavn() == medlemsnavn)
+//				return medlemTab[i].getStatusIndeks();
+//		}
+//		return -1;
+		//nytt forslag til kode
+		for(int i = 0; i < antallMedlemmer; i++) {
+			//antar mengden starter på 0, returnerer index posisjonen til medlemet
+			if(medlemTab[i].equals(medlemsnavn)) {
+				return i;
+			} else {
+				return //ikke funnet;
+			}
 		}
-		return -1;
 	}
 	public int finnPartnerFor(String medlemsnavn) {
 		if (finnMedlemsIndeks(medlemsnavn) == -1)

@@ -66,7 +66,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 <<<<<<< HEAD
-	public T fjern(T element) { // Denne skal vi se p� litt senere
+	public T fjern(T element) { // Denne skal vi se p� litt senere
 =======
 	public T fjern(T element) { 
 >>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
@@ -148,9 +148,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 			likeMengder = false;
 		} else {
 			Iterator<T> teller = m2.iterator();
-
-
-				while (teller.hasNext() && likeMengder) {
+			while (teller.hasNext() && likeMengder) {
 					T element = teller.next();
 					if(!this.inneholder(element)) {
 						likeMengder = false;
@@ -197,7 +195,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 			aktuell = aktuell.getNeste();
 		}
 		Iterator<T> teller =m2.iterator();
-		while(teller.hashNext()) {
+		while(teller.hasNext()) {
 			element = teller.next();
 			if(!this.inneholder(element)) {
 				((KjedetMengde<T>)begge).settInn(element);
@@ -231,14 +229,18 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 			}
 			aktuell = aktuell.getNeste();
 		}
-		Iterator<T> it = m2.iterator();
-		while (it.hashNext()) {
-			T element = it.next();
-			if(this.inneholder(element) == false) {
+		//ny kode forslag
+		//Jeg antar at differens er this-mengden minus m2-mengden?
+		//fortsetter å bruke differensM mengden over fordi eg orker ikke å lage ny og inser at det hadde tatt meg mindre tid å lage ny enn å skrive alt dette, okei no begynner det e bli teit, koffor leser du enda? du er klar over at jeg har gjort denne ekstra lang for aat du skal komme lenger og lenger til siden bare for min egen underholdning? Dette startet egentlig som en spøk, men jeg inser at du ikke gir deg helt enda som er ganske imponerende o7
+
+		Iterator<T> teller = this.iterator();
+		while(teller.hasNext()) {
+			T element = teller.next();
+			if(!m2.inneholder(element)) {
 				differensM.leggTil(element);
 			}
 		}
-		
+		// denne koden kommer til å breake nå pga 2 versjoner av samme stufsa. 
 		return differensM;
 	}
 
