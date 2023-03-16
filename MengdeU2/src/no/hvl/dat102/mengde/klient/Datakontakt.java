@@ -10,6 +10,9 @@ public class Datakontakt {
 		medlemTab = new Medlem[maksMengde];
 		antallMedlemmer = 0;
 	}
+	public int getAntallMedlemmer() {
+		return antallMedlemmer;
+	}
 	
 	//LEgger til et nytt medlem i medlemstabellen
 	public void leggTilMedlem (Medlem person) {
@@ -38,7 +41,7 @@ public class Datakontakt {
 			if(medlemTab[i].equals(medlemsnavn)) {
 				return i;
 			} else {
-				return //ikke funnet;
+				return; //ikke funnet;
 			}
 		}
 	}

@@ -1,6 +1,9 @@
 package no.hvl.dat102.mengde.klient;
 
 import java.util.Scanner;
+import no.hvl.dat102.mengde.klient.Medlem;
+import no.hvl.dat102.mengde.klient.*;
+import no.hvl.dat102.mengde.tabell.*;
 
 public class Tekstgrensesnitt {
 	private static Datakontakt data;
@@ -13,8 +16,9 @@ public class Tekstgrensesnitt {
 			
 			Scanner read = new Scanner(System.in);  // lager scanner
 			String navn;
-			String fødselsår; // i format DD/MM/YYYY  eksempel 17/5/1994 
-			String status = ""; // tenk facebook. [singel, gift, i forhold] ect r  ha brukeren bare trykke 1,2 eller 3 for hvilke som gjelder de.
+			String fødselsår; 
+			String status; 
+			String innskrevetStatus = "";
 			
 			System.out.println("Velkommen som nytt medlem, venligst svar ærlig på følgende spørmsmål.\n"); // println gÃ¥r pÃ¥ ny linje nÃ¥r den er ferdig
 			System.out.print("Navn: "); // bruker vanlig print siden jeg Ã¸nsker at nÃ¥r personen skriver i teminalen sÃ¥ stÃ¥r det vedsiden av Navn: 
@@ -24,17 +28,17 @@ public class Tekstgrensesnitt {
 		    System.out.println("Velg en av følgende statuser 1: Singel, 2: Gift eller 3: I forhold");
 		    System.out.print("Status: ");
 		    status = read.nextLine();
-		    if ( status == "1") {
-		    	status = "singel";
-		    } else if (status == "2") {
-		    	status = "Gift";
-		    	} else if (status == "3") {
-		    		status = "i forhold";
+		    if (status.equals("1")) {
+		    	innskrevetStatus = "singel";
+		    } else if (status.equals("2")) {
+		    	innskrevetStatus = "Gift";
+		    	} else if (status.equals("3"))  {
+		    		innskrevetStatus = "i forhold";
 		    	} else {
-		    		System.out.println("Ugyldig svar alternativ");
+		    		innskrevetStatus ="Ugyldig svar alternativ";
 		    	}
-		   System.out.println(status);
-		    
+		   System.out.println(innskrevetStatus);
+		    read.close();
 		    Medlem nyMedlem = new Medlem(navn);
 		    return nyMedlem;
 		}  
@@ -51,13 +55,13 @@ public class Tekstgrensesnitt {
 			Medlem m1;
 			Medlem m2;
 			Medlem[] m = kopi.getMedlemsTabell(); // navn pÃ¥ tabellen vÃ¥r!!!
-			int størrelse = kopi.getAntall();
+			int størrelse = kopi.getAntallMedlemmer();
 			
 			for(int i = 0; i < størrelse; i++) {
 				
 				m1 = m[i];
 				
-				if(m1.getStatusIndeks() > i || m1.getStatusIndex() == -1) {
+				if(m1.getStatusIndeks() > i || m1.getStatusIndeks() == -1) {
 					liste += m1.getNavn() + " og ";
 					kopi.finnPartnerFor(m1.getNavn());
 					if(m1.getStatusIndeks() != -1) {
