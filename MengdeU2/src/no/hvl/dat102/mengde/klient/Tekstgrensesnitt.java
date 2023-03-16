@@ -12,30 +12,31 @@ public class Tekstgrensesnitt {
 		public static Medlem lesMedlem(){
 			
 			Scanner read = new Scanner(System.in);  // lager scanner
-			//thing jeg Ã¸nsker dere skal legge til.
 			String navn;
-			String fødselsår; // i format DD/MM/YYYY  eksempel 17/5/1994  Bruker mÃ¥ kunne fÃ¥ lov til Ã¥ skrive det i det formate
-			String status = ""; // tenk facebook. [singel, gift, i forhold] ect (her skal det barevÃ¦re lov Ã¥ skrive inn de 3 tingene. fÃ¥reslÃ¥r Ã¥ skrive ut alle 3 ogsÃ¥ ha brukeren bare trykke 1,2 eller 3 for hvilke som gjelder de.
+			String fødselsår; // i format DD/MM/YYYY  eksempel 17/5/1994 
+			String status = ""; // tenk facebook. [singel, gift, i forhold] ect r  ha brukeren bare trykke 1,2 eller 3 for hvilke som gjelder de.
 			
-			//forslag til hvordan dere kan gjÃ¸re det.
-			System.out.println(" Velkommen som nytt medlem,\n venligst svar ærligt på følgende spørmsmål.\n"); // println gÃ¥r pÃ¥ ny linje nÃ¥r den er ferdig
+			System.out.println("Velkommen som nytt medlem, venligst svar ærlig på følgende spørmsmål.\n"); // println gÃ¥r pÃ¥ ny linje nÃ¥r den er ferdig
 			System.out.print("Navn: "); // bruker vanlig print siden jeg Ã¸nsker at nÃ¥r personen skriver i teminalen sÃ¥ stÃ¥r det vedsiden av Navn: 
 		    navn = read.nextLine(); // legger til verdien du skriver inn pÃ¥ variabelen navn
 		    System.out.print("Oppgi fødselsår på formen DD/MM/YYYY: ");
 		    fødselsår = read.nextLine();
 		    System.out.println("Velg en av følgende statuser 1: Singel, 2: Gift eller 3: I forhold");
 		    System.out.print("Status: ");
-		    if (status == "1") {
-		    	status = "Singel";
+		    status = read.nextLine();
+		    if ( status == "1") {
+		    	status = "singel";
 		    } else if (status == "2") {
-		    		status = "Gift";
+		    	status = "Gift";
 		    	} else if (status == "3") {
 		    		status = "i forhold";
 		    	} else {
-		    		status = "Ugyldig svar alternativ/ Ønsker ikke oppgi";
+		    		System.out.println("Ugyldig svar alternativ");
 		    	}
-		    status = read.nextLine();
-		    return medlem;
+		   System.out.println(status);
+		    
+		    Medlem nyMedlem = new Medlem(navn);
+		    return nyMedlem;
 		}  
 		 
 		// Skriver ut hobbylisten for et medlem 

@@ -11,7 +11,6 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	private static Random rand = new Random();
 	private int antall; // antall elementer i mengden
 	private LinearNode<T> start;
-	//hei, kan du ses dette????
 
 	//Oppretter en tom mengde.
 	public KjedetMengde() {
@@ -65,12 +64,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-<<<<<<< HEAD
-	public T fjern(T element) { // Denne skal vi se p� litt senere
-=======
 	public T fjern(T element) { 
->>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
-
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
 
@@ -282,7 +276,6 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-	
 	public String toString() {
 		String outstring = "[";
 		LinearNode<T> aktuell = start;

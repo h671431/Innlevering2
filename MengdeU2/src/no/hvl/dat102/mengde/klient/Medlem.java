@@ -13,6 +13,17 @@ public class Medlem {
 		this.hobbyer = hobbyer;
 		this.statusIndeks = -1;
 	}
+	public Medlem(String navn, MengdeADT<Hobby> hobbyer) {
+		this.navn = navn;
+		this.hobbyer = new KjedetMengde<>();
+		this.hobbyer.leggTilAlle(hobbyer);;
+		this.statusIndeks = -1;
+	}
+	public Medlem(String navn) {
+		this.navn = navn;
+		this.hobbyer = new KjedetMengde<>();
+		this.statusIndeks = -1;
+	}
 
 	public String getNavn() {
 		return navn;
