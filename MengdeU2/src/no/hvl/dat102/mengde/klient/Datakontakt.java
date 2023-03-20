@@ -41,7 +41,7 @@ public class Datakontakt {
 			if(medlemTab[i].equals(medlemsnavn)) {
 				return i;
 			} else {
-				return; //ikke funnet;
+				return -1; //ikke funnet;
 			}
 		}
 	}

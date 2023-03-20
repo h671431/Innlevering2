@@ -1,5 +1,7 @@
 package no.hvl.dat102.mengde.klient;
 
+import no.hvl.dat102.mengde.tabell.TabellMengde;
+
 public class KlientMedlem {
 
 	public static void main(String[] args) { 

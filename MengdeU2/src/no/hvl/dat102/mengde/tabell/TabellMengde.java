@@ -7,6 +7,7 @@ import java.util.Random;
 import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.mengde.adt.MengdeADT;
 import no.hvl.dat102.mengde.kjedet.LinearNode;
+import no.hvl.dat102.mengde.kjedet.KjedetMengde;
 
 public class TabellMengde<T> implements MengdeADT<T> {
 	
@@ -77,9 +78,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public T fjern(T element) {
-
 		// Sï¿½ker etter og fjerner element. Returnerer null-ref ved ikke-funn
-
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
 
@@ -138,7 +137,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public MengdeADT<T> union(MengdeADT<T> m2) { 
-		MengdeADT<T> negge = new TabellMengde<T>();
+		MengdeADT<T> begge = new TabellMengde<T>();
 		begge.leggTilAlle(this);
 		begge.leggTilAlle(m2);
 		return begge;
@@ -173,6 +172,16 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 		return differensM;
 	}
+// B: Forslag til kode: 
+//	public MengdeADT<T> differens(MengdeADT<T> m2) {
+//		MengdeADT<T> differensM = new TabellMengde<T>();
+//		for(T element : union(m2)) {
+//			if(!m2.inneholder(element)) {
+//				((TabellMengde<T>) differensM).settInn(element);
+//			}
+//		}
+//		return differensM;
+//	}
 
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
@@ -198,21 +207,20 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		tab[antall] = element;
 		antall++;
 	}
-<<<<<<< HEAD
-	//B: Må gjøres om
-	@Override
-	public String toString() {
-		String resultat = "";
-		T[] aktuell = tab;
-		while (aktuell != null) {
-			for(int i=0; i<antall; i++) {
-				resultat += "\"" + tab[i].toString() + "\"";
-				if(i < antall-1)
-					resultat += ", ";
-			}
-		}
-		return resultat;
-=======
+
+//	@Override
+//	public String toString() {
+//		String resultat = "";
+//		T[] aktuell = tab;
+//		while (aktuell != null) {
+//			for(int i=0; i<antall; i++) {
+//				resultat += "\"" + tab[i].toString() + "\"";
+//				if(i < antall-1)
+//					resultat += ", ";
+//			}
+//		}
+//		return resultat;
+
 	
 	@Override
 	public String toString() {
@@ -225,7 +233,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		}
 			outstring += "]";
 			return outstring;
->>>>>>> branch 'master' of https://github.com/h671431/Innlevering2.git
 	}
 
 }// class

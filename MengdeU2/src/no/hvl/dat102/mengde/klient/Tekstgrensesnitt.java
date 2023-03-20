@@ -54,7 +54,7 @@ public class Tekstgrensesnitt {
 			String partnerNavn = "";
 			Medlem m1;
 			Medlem m2;
-			Medlem[] m = kopi.getMedlemsTabell(); // navn på tabellen vår!!!
+			Medlem[] m = kopi.getMedlemTab(); // navn på tabellen vår!!!
 			int st�rrelse = kopi.getAntallMedlemmer();
 			
 			for(int i = 0; i < st�rrelse; i++) {
