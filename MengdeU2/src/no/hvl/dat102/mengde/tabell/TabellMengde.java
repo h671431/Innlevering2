@@ -19,6 +19,13 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	public TabellMengde() {
 		this(STDK);
 	}
+	public TabellMengde (Iterable <T> element) {
+		this();
+		leggTilAlle(element);
+	}
+	public TabellMengde(T [] element) {
+		this (Arrays.asList(element));
+	}
 
 	public TabellMengde(int start) {
 		antall = 0;
@@ -47,7 +54,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-	public void leggTilAlle(MengdeADT<T> m2) {
+	public void leggTilAlle(Iterable<T> m2) {
 		Iterator<T> teller = m2.iterator();
 		while (teller.hasNext())
 			leggTil(teller.next());
@@ -107,11 +114,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		return (funnet);
 	}
 
-	/*
-	 * N�r vi overkj�rer (override) equals- meteoden er det anbefalt at vi ogs�
-	 * overkj�rer hashcode-metoden da en del biblioterker brker hashcode sammen med
-	 * equals. Vi kommer tilbake til forklaring og bruk av hashcode senere i faget.
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -148,7 +150,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		MengdeADT<T> snittM = new TabellMengde<T>();
 		for(T elm : tab) {
 			if(m2.inneholder(elm)) {
-				snittM.leggTil(elm);;
+				snittM.leggTil(elm);
 			}
 		}
 		return snittM;
@@ -163,13 +165,12 @@ public class TabellMengde<T> implements MengdeADT<T> {
 			}
 		} 
 		Iterator<T> it = m2.iterator();
-		while(it.hashNext()) {
-			T elm = it.next();
-			if(this.inneholder(elm) == false) {
-				differensM.leggTil(elm);
-			}
-		}
-
+//		while(it.hasNext()) {
+//			T elm = it.next();
+//			if(this.inneholder(elm) == false) {
+//				differensM.leggTil(elm);
+//			}
+//		}
 		return differensM;
 	}
 // B: Forslag til kode: 
@@ -234,5 +235,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 			outstring += "]";
 			return outstring;
 	}
+	
 
 }// class

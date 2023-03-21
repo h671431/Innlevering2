@@ -147,9 +147,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 					if(!this.inneholder(element)) {
 						likeMengder = false;
 					}
-					
 				}
-
 		}
 		return likeMengder;
 	}
@@ -163,21 +161,6 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	public int antall() {
 		return antall;
 	}
-
-	@Override
-	public MengdeADT<T> union(MengdeADT<T> m2) { // Denne ersattes med en mer effektiv union, se kladdeoppgavenr3
-		KjedetMengde<T> begge = new KjedetMengde<T>();
-		LinearNode<T> aktuell = start;
-		while (aktuell != null) {
-			begge.leggTil(aktuell.getElement());
-			aktuell = aktuell.getNeste(); // this-mengden
-		} // while
-		Iterator<T> teller = m2.iterator();
-		while (teller.hasNext()) {
-			begge.leggTil(teller.next());
-		}
-		return begge;
-	}//
 
 	public MengdeADT<T> union (MengdeADT<T> m2) { 
 		MengdeADT<T> begge = new KjedetMengde<T>();
@@ -264,16 +247,16 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		start = nyNode;
 		antall++;
 	}
-	@Override
-	public String toString() {
-		String resultat = "";
-		LinearNode<T> aktuell = start;
-		while (aktuell != null) {
-			resultat += aktuell.getElement().toString() + "\t";
-			aktuell = aktuell.getNeste();
-		}
-		return resultat;
-	}
+//	@Override
+//	public String toString() {
+//		String resultat = "";
+//		LinearNode<T> aktuell = start;
+//		while (aktuell != null) {
+//			resultat += aktuell.getElement().toString() + "\t";
+//			aktuell = aktuell.getNeste();
+//		}
+//		return resultat;
+//	}
 
 	@Override
 	public String toString() {
