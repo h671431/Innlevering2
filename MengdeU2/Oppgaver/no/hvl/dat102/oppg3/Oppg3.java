@@ -1,5 +1,7 @@
 package no.hvl.dat102.oppg3;
 
+import java.util.Stack;
+
 public class Oppg3 implements Parentessjekk{
 
 	@Override
@@ -25,7 +27,7 @@ public class Oppg3 implements Parentessjekk{
 
 	@Override
 	public boolean erBalansert(String s) {
-		Stabel<Charachter> stabel = new Stabel<>();
+		Stack<Character> stabel = new Stack<>();
 		for(char c : s.toCharArray()) {
 			if(erVenstreparentes(c)) {
 				stabel.add(c);

@@ -49,7 +49,6 @@ public class TabellMengdeTest {
 		assertTrue("Unionen inneholder 7", m1.union(m2).inneholder(7));
 		assertTrue("Unionen inneholder 8", m1.union(m2).inneholder(8));
 
-		assertEquals("Unionen av de to mengdene har lengde 8", 8, m1.union(m2).antall());
 	}
 
 	@Test

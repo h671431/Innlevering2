@@ -20,7 +20,7 @@ public interface MengdeADT<T> extends Iterable<T>{
 	 * 
 	 * @param m2 er mengden som skal legges til denne mengden
 	 */
-	void leggTilAlle(Iterable<T> m2);
+	void leggTilAlle(MengdeADT<T> m2);
 
 	/**
 	 * Fjerner og returnerer et tilfeldig element fra mengden

@@ -3,15 +3,13 @@ package no.hvl.dat102.oppg4;
 public class B {
 	public static void main(String[] args) {
 		
-		int p = 10;
-		for(int i = 0; i < p; i++) {
-			System.out.println("a("+(i+1)+")= " +a(i+1));
-		}
+		System.out.println(a(7));
 	}
 	
 	static int a(int n) {
 		if(n == 0) {
 			return 2;
+			
 		}else if(n == 1) {
 			return 5;
 		}

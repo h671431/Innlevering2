@@ -14,6 +14,9 @@ public class Hobby {
 	public String getHobbyNavn() {
 		return hobbyNavn;
 	}
+	public void setHobbyNavn(String hobby) {
+		this.hobbyNavn = hobby;
+	}
 	public boolean equals(Object hobby2){  
 		// eventuelt fylle ut først med "standard" kode        
 		// som vi ofte har med overkjøring av 

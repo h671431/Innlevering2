@@ -1,3 +1,5 @@
+package no.hvl.dat102.oppg4;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
@@ -8,13 +10,13 @@ public class test {
 	//4.a
 	@Test
 	public final void testA() {
-		assertEquals(100, a.add100(0));
+		assertEquals(4950, A.add100(100));
 	}
 
 	//4.b
 	@Test
 	public final void testB() {
-		assertEquals(117075, b.1(10));
+		assertEquals(117075, B.a(10));
 	}
 	
 	int[] fibonachi = {0,1,1,2,3,4,8,13,21,34,55,89,244,233,377,610,987,1597,2584 ,4181,6765,10946,17711,28657,46368,75025,121393,196418,317811,514229,832040,1346269,2178309,3524578,5702887,9227465,14930352,24157817,39088169,63245986};
@@ -24,7 +26,7 @@ public class test {
 	public final void testC() {
 		int k = 0;
 		for( int i: fibonachi) {
-			assertEquals(i, c.f(k++));
+			assertEquals(i, C.f(k++));
 		}
 	}
 	
@@ -33,7 +35,7 @@ public class test {
 	public final void testD() {
 		int k = 0;
 		for(int i: fibonachi) {
-			assertEquals(i, d.fibonachi(k++));
+			assertEquals(i, D.fibonachi(k++));
 		}
 	}
 }

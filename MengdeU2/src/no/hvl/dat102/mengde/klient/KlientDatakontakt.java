@@ -26,8 +26,8 @@ public class KlientDatakontakt {
 		dk.leggTilMedlem(m2);
 		dk.leggTilMedlem(m3);
 	
-		System.out.println("Alle parene:");
-		Tekstgrensesnitt.skrivParListe(dk);
+//		System.out.println("Alle parene:");
+//		Tekstgrensesnitt.skrivParListe(dk);
 
 	}
 

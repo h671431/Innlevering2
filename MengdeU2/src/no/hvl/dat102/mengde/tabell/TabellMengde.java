@@ -52,8 +52,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 			antall++;
 		}
 	}
-
-	@Override
 	public void leggTilAlle(Iterable<T> m2) {
 		Iterator<T> teller = m2.iterator();
 		while (teller.hasNext())
@@ -173,16 +171,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 //		}
 		return differensM;
 	}
-// B: Forslag til kode: 
-//	public MengdeADT<T> differens(MengdeADT<T> m2) {
-//		MengdeADT<T> differensM = new TabellMengde<T>();
-//		for(T element : union(m2)) {
-//			if(!m2.inneholder(element)) {
-//				((TabellMengde<T>) differensM).settInn(element);
-//			}
-//		}
-//		return differensM;
-//	}
 
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
@@ -208,22 +196,9 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		tab[antall] = element;
 		antall++;
 	}
-
-//	@Override
-//	public String toString() {
-//		String resultat = "";
-//		T[] aktuell = tab;
-//		while (aktuell != null) {
-//			for(int i=0; i<antall; i++) {
-//				resultat += "\"" + tab[i].toString() + "\"";
-//				if(i < antall-1)
-//					resultat += ", ";
-//			}
-//		}
-//		return resultat;
-
 	
-	@Override
+	
+    @Override
 	public String toString() {
 		String outstring = "[";
 		for(int i = 0; i < antall; i++) {
@@ -234,6 +209,11 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		}
 			outstring += "]";
 			return outstring;
+	}
+	@Override
+	public void leggTilAlle(MengdeADT<T> m2) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
